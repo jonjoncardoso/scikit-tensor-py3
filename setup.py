@@ -1,21 +1,24 @@
 #!/usr/bin/env python
 """Python module for multilinear algebra and tensor factorizations"""
 
-import os
-import sys
+from setuptools import setup, find_packages
 
-DISTNAME = 'scikit-tensor-py3'
-VERSION = '0.4.1'
-DESCRIPTION = """Python module for multilinear algebra and tensor factorizations"""
-with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as f:
-    LONG_DESCRIPTION = f.read()
-MAINTAINER = 'Evert Rol'
-MAINTAINER_EMAIL = 'evert.rol@gmail.com'
-URL = 'http://github.com/evertrol/scikit-tensor-py3'
-LICENSE = 'GPLv3'
-DOWNLOAD_URL = URL
-PACKAGE_NAME = 'sktensor'
-EXTRA_INFO = dict(
+setup(
+    name = 'scikit-tensor-py3'
+    version = '0.4.2' ,
+    description = """Python module for multilinear algebra and tensor factorizations""",
+    maintainer = 'Jonathan Cardoso-Silva',
+    maintainer_email = 'jonathan.car.silva@gmail.com',
+    url = 'http://github.com/jonjoncardoso/scikit-tensor-py3',
+    license = 'GPLv3',
+    py_modules=["sktensor"],
+    download_url = 'http://github.com/jonjoncardoso/scikit-tensor-py3',
+    package_name = 'sktensor',
+    packages=find_packages(),
+    install_requires=[
+        "numpy >= 1.13",
+        "scipy >= 0.19.1"],
+    python_requires=">=3",
     classifiers=[
         "Development Status :: 3 - Alpha",
         'Intended Audience :: Developers',
@@ -33,44 +36,3 @@ EXTRA_INFO = dict(
         'Programming Language :: Python :: 3.7',
     ]
 )
-
-try:
-    import setuptools  # If you want to enable 'python setup.py develop'
-    EXTRA_INFO.update(dict(
-        zip_safe=False,   # the package can run out of an .egg file
-        include_package_data=True,
-    ))
-except:
-    print('setuptools module not found.')
-    print("Install setuptools if you want to enable 'python setup.py develop'.")
-
-
-def setup_package():
-# Call the setup function
-    metadata = dict(
-        name=DISTNAME,
-        maintainer=MAINTAINER,
-        maintainer_email=MAINTAINER_EMAIL,
-        description=DESCRIPTION,
-        license=LICENSE,
-        url=URL,
-        download_url=DOWNLOAD_URL,
-        long_description=LONG_DESCRIPTION,
-        version=VERSION,
-        python_requires=">=3.5",
-        install_requires=[
-            'numpy>=1.16',
-            'scipy>=1.3',
-        ],
-        **EXTRA_INFO
-    )
-
-
-    from setuptools import setup
-    metadata['version'] = VERSION
-
-
-    setup(**metadata)
-
-if __name__ == "__main__":
-    setup_package()
