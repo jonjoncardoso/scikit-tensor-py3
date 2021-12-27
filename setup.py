@@ -45,25 +45,6 @@ except:
     print("Install setuptools if you want to enable 'python setup.py develop'.")
 
 
-def configuration(parent_package='', top_path=None, package_name=DISTNAME):
-    if os.path.exists('MANIFEST'):
-        os.remove('MANIFEST')
-
-    from numpy.distutils.misc_util import Configuration
-    config = Configuration(None, parent_package, top_path)
-
-    # Avoid non-useful msg: "Ignoring attempt to set 'name' (from ... "
-    config.set_options(
-        ignore_setup_xxx_py=True,
-        assume_default_configuration=True,
-        delegate_options_to_subpackages=True,
-        quiet=True
-    )
-
-    config.add_subpackage(PACKAGE_NAME)
-    return config
-
-
 def setup_package():
 # Call the setup function
     metadata = dict(
@@ -84,24 +65,9 @@ def setup_package():
         **EXTRA_INFO
     )
 
-    if (len(sys.argv) >= 2
-            and ('--help' in sys.argv[1:] or sys.argv[1]
-                 in ('--help-commands', 'egg_info', '--version', 'clean'))):
 
-        # For these actions, NumPy is not required.
-        #
-        # They are required to succeed without Numpy for example when
-        # pip is used to install Scikit when Numpy is not yet present in
-        # the system.
-        try:
-            from setuptools import setup
-        except ImportError:
-            from distutils.core import setup
-
-        metadata['version'] = VERSION
-    else:
-        metadata['configuration'] = configuration
-        from numpy.distutils.core import setup
+    from setuptools import setup
+    metadata['version'] = VERSION
 
 
     setup(**metadata)
