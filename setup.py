@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = 'scikit-tensor-py3'
+    name = 'scikit-tensor-py3',
     version = '0.4.2' ,
     description = """Python module for multilinear algebra and tensor factorizations""",
     maintainer = 'Jonathan Cardoso-Silva',
