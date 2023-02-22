@@ -30,7 +30,7 @@ def unravel_dimension(shape, idx):
         idx = np.array([idx])
     k = [1] + list(np.cumprod(shape[:-1]))
     n = len(shape)
-    subs = np.zeros((len(idx), n), dtype=np.int)
+    subs = np.zeros((len(idx), n), dtype=int)
     for i in np.arange(n - 1, -1, -1):
         subs[:, i] = np.floor(idx / k[i])
         idx = idx % k[i]

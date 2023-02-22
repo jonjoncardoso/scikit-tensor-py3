@@ -31,7 +31,7 @@ _DEF_MAXITER = 500
 _DEF_INIT = 'nvecs'
 _DEF_CONV = 1e-5
 _DEF_FIT_METHOD = 'full'
-_DEF_TYPE = np.float
+_DEF_TYPE = float
 
 __all__ = [
     'als',

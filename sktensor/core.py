@@ -268,7 +268,7 @@ def innerprod(X, Y):
     return np.dot(X.flatten(), Y.flatten())
 
 
-def nvecs(X, n, rank, do_flipsign=True, dtype=np.float):
+def nvecs(X, n, rank, do_flipsign=True, dtype=float):
     """
     Eigendecomposition of mode-n unfolding of a tensor
     """

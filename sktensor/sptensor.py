@@ -56,7 +56,7 @@ class sptensor(tensor_mixin):
 
     Examples
     --------
-    >>> S = sptensor(([0,1,2], [3,2,0], [2,2,2]), [1,1,1], shape=(10, 20, 5), dtype=np.float)
+    >>> S = sptensor(([0,1,2], [3,2,0], [2,2,2]), [1,1,1], shape=(10, 20, 5), dtype=float)
     >>> S.shape
     (10, 20, 5)
     >>> S.dtype
@@ -325,7 +325,7 @@ class unfolded_sptensor(coo_matrix):
 
     def __init__(self, tpl, shape, rdims, cdims, ten_shape, dtype=None, copy=False):
         self.ten_shape = np.array(ten_shape)
-        if isinstance(rdims, int):
+        if isinstance(rdims, np.int32):
             rdims = [rdims]
         if cdims is None:
             cdims = np.setdiff1d(range(len(self.ten_shape)), rdims)[::-1]
@@ -343,7 +343,7 @@ class unfolded_sptensor(coo_matrix):
         T : sptensor
             Sparse tensor that is created by refolding according to ``ten_shape``.
         """
-        nsubs = np.zeros((len(self.data), len(self.ten_shape)), dtype=np.int)
+        nsubs = np.zeros((len(self.data), len(self.ten_shape)), dtype=int)
         if len(self.rdims) > 0:
             nidx = np.unravel_index(self.row, self.ten_shape[self.rdims])
             for i in range(len(self.rdims)):

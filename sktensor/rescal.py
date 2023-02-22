@@ -110,7 +110,7 @@ def als(X, rank, **kwargs):
     func_compute_fval = kwargs.pop('compute_fval', _DEF_FIT_METHOD)
     orthogonalize = kwargs.pop('orthogonalize', False)
     P = kwargs.pop('attr', _DEF_ATTR)
-    dtype = kwargs.pop('dtype', np.float)
+    dtype = kwargs.pop('dtype', float)
 
     # ------------- check input ----------------------------------------------
     if not len(kwargs) == 0:
