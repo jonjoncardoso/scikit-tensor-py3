@@ -16,7 +16,7 @@ setup(
     package_name = 'sktensor',
     packages=find_packages(),
     install_requires=[
-        "numpy >= 1.13",
+        "numpy < 1.20",
         "scipy >= 0.19.1"],
     python_requires=">=3",
     classifiers=[
